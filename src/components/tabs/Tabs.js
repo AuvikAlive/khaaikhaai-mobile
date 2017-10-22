@@ -5,6 +5,8 @@ import Restaurants from '../restaurants/Restaurants'
 import Reviews from '../reviews/Reviews'
 import Profile from '../profile/Profile'
 
+import { red, yellow } from '../../config/colors'
+
 const screens = {
   Restaurants: {
     screen: Restaurants
@@ -18,7 +20,16 @@ const screens = {
 }
 
 const options = {
-  tabBarPosition: 'bottom'
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    activeTintColor: yellow,
+    indicatorStyle: {
+      backgroundColor: yellow
+    },
+    style: {
+      backgroundColor: red
+    }
+  }
 }
 
 const Tabs = TabNavigator(screens, options)

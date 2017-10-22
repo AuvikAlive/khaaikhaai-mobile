@@ -4,8 +4,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import Restaurants from './src/components/restaurants/Restaurants'
 import Tabs from './src/components/tabs/Tabs'
 
-export default class App extends React.Component {
-  render() {
-    return <Tabs />
-  }
-}
+const App = () => <Tabs />
+
+export default App
