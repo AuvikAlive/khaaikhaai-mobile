@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { Button } from 'react-native-elements'
 
 export default class App extends React.Component {
   render() {
@@ -8,7 +9,13 @@ export default class App extends React.Component {
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
-        <Text>My text Modified :D</Text>
+        <Button
+          raised
+          icon={{ name: 'home', size: 32 }}
+          buttonStyle={{ backgroundColor: 'red', borderRadius: 10 }}
+          textStyle={{ textAlign: 'center' }}
+          title={`Welcome to\nReact Native Elements`}
+        />
       </View>
     )
   }
