@@ -5,7 +5,7 @@ import Reviews from '../reviews/Reviews'
 import Restaurants from '../restaurants/Restaurants'
 import Profile from '../profile/Profile'
 
-import { red, yellow } from '../../config/colors'
+import { red, blue, orange } from '../../config/colors'
 
 const screens = {
   Reviews: {
@@ -26,12 +26,12 @@ const options = {
     showLabel: false,
     showIcon: true,
     inactiveTintColor: 'white',
-    activeTintColor: yellow,
+    activeTintColor: red,
     indicatorStyle: {
-      backgroundColor: yellow
+      backgroundColor: red
     },
     style: {
-      backgroundColor: red
+      backgroundColor: blue
     }
   }
 }
