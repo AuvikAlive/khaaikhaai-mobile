@@ -1,18 +1,18 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 
-import Restaurants from '../restaurants/Restaurants'
 import Reviews from '../reviews/Reviews'
+import Restaurants from '../restaurants/Restaurants'
 import Profile from '../profile/Profile'
 
 import { red, yellow } from '../../config/colors'
 
 const screens = {
-  Restaurants: {
-    screen: Restaurants
-  },
   Reviews: {
     screen: Reviews
+  },
+  Restaurants: {
+    screen: Restaurants
   },
   Profile: {
     screen: Profile
@@ -22,6 +22,10 @@ const screens = {
 const options = {
   tabBarPosition: 'bottom',
   tabBarOptions: {
+    upperCaseLabel: false,
+    showLabel: false,
+    showIcon: true,
+    inactiveTintColor: 'white',
     activeTintColor: yellow,
     indicatorStyle: {
       backgroundColor: yellow
