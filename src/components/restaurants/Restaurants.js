@@ -10,7 +10,11 @@ class Restaurants extends Component {
   }
 
   render() {
-    return <Text>Restaurants List</Text>
+    return (
+      <View style={{ marginTop: 25 }}>
+        <Text>Restaurants List</Text>
+      </View>
+    )
   }
 }
 

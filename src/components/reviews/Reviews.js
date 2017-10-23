@@ -10,7 +10,11 @@ class Reviews extends Component {
   }
 
   render() {
-    return <Text>Reviews List</Text>
+    return (
+      <View style={{ marginTop: 25 }}>
+        <Text>Reviews List</Text>
+      </View>
+    )
   }
 }
 

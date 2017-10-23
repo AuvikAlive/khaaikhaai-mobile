@@ -26,7 +26,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={{ marginTop: 25 }}>
         <Card title="My Account" onLayout={this.onPageLayout}>
           <Avatar parentWidth={this.state.cardWidth} />
 
