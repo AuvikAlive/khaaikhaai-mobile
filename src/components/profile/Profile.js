@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { View, Text, Image } from 'react-native'
-import { Icon, Avatar, Card, Button } from 'react-native-elements'
+import { Icon, Card, Button } from 'react-native-elements'
+
+import Avatar from './Avatar'
+
+import { green, red } from '../../config/colors'
 
 class Profile extends Component {
   static navigationOptions = {
@@ -10,9 +14,7 @@ class Profile extends Component {
   }
 
   state = {
-    cardWidth: null,
-    avatarWidth: null,
-    avatarHeight: null
+    cardWidth: null
   }
 
   onPageLayout = event => {
@@ -20,46 +22,16 @@ class Profile extends Component {
     this.setState({ cardWidth: width })
   }
 
-  componentDidMount() {
-    Image.getSize(
-      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      (width, height) => {
-        this.setState({ avatarWidth: width, avatarHeight: height })
-      }
-    )
-  }
-
   render() {
     return (
       <Card title="My Account" onLayout={this.onPageLayout}>
-        <Image
-          source={{
-            uri:
-              'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
-          }}
-          style={{
-            width: this.state.cardWidth,
-            height:
-              this.state.cardWidth *
-              this.state.avatarHeight /
-              this.state.avatarWidth
-          }}
-          resizeMode="contain"
-        />
-        <Text style={{ marginBottom: 10 }}>
-          The idea with React Native Elements is more about component structure
-          than actual design.
-        </Text>
+        <Avatar parentWidth={this.state.cardWidth} />
+
         <Button
-          icon={{ name: 'code' }}
-          backgroundColor="#03A9F4"
-          buttonStyle={{
-            borderRadius: 0,
-            marginLeft: 0,
-            marginRight: 0,
-            marginBottom: 0
-          }}
-          title="VIEW NOW"
+          icon={{ name: 'favorite' }}
+          backgroundColor={red}
+          title="Favorites"
+          buttonStyle={{ marginTop: 15 }}
         />
       </Card>
     )
