@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
-import { Icon, Card, Button } from 'react-native-elements'
+import { ScrollView } from 'react-native'
+import { Card, Icon } from 'react-native-elements'
 
 import Avatar from './Avatar'
-
-import { green, red } from '../../config/colors'
+import Favorites from './Favorites'
+import Reviews from './Reviews'
+import Notifications from './Notifications'
+import Settings from './Settings'
 
 class Profile extends Component {
   static navigationOptions = {
@@ -24,16 +26,16 @@ class Profile extends Component {
 
   render() {
     return (
-      <Card title="My Account" onLayout={this.onPageLayout}>
-        <Avatar parentWidth={this.state.cardWidth} />
+      <ScrollView>
+        <Card title="My Account" onLayout={this.onPageLayout}>
+          <Avatar parentWidth={this.state.cardWidth} />
 
-        <Button
-          icon={{ name: 'favorite' }}
-          backgroundColor={red}
-          title="Favorites"
-          buttonStyle={{ marginTop: 15 }}
-        />
-      </Card>
+          <Favorites />
+          <Reviews />
+          <Notifications />
+          <Settings />
+        </Card>
+      </ScrollView>
     )
   }
 }
