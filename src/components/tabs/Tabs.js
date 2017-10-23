@@ -7,19 +7,19 @@ import Profile from '../profile/Profile'
 
 import { red, blue, orange } from '../../config/colors'
 
-const screens = {
+const RouteConfigs = {
+  Profile: {
+    screen: Profile
+  },
   Reviews: {
     screen: Reviews
   },
   Restaurants: {
     screen: Restaurants
-  },
-  Profile: {
-    screen: Profile
   }
 }
 
-const options = {
+const TabNavigatorConfig = {
   tabBarPosition: 'bottom',
   tabBarOptions: {
     upperCaseLabel: false,
@@ -36,6 +36,6 @@ const options = {
   }
 }
 
-const Tabs = TabNavigator(screens, options)
+const Tabs = TabNavigator(RouteConfigs, TabNavigatorConfig)
 
 export default Tabs
