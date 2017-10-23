@@ -8,14 +8,14 @@ import Profile from '../profile/Profile'
 import { red, blue, orange } from '../../config/colors'
 
 const RouteConfigs = {
-  Profile: {
-    screen: Profile
-  },
   Reviews: {
     screen: Reviews
   },
   Restaurants: {
     screen: Restaurants
+  },
+  Profile: {
+    screen: Profile
   }
 }
 

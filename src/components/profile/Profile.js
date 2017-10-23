@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { ScrollView } from 'react-native'
 import { Card, Icon } from 'react-native-elements'
 
-import Avatar from './Avatar'
-import Favorites from './Favorites'
-import Reviews from './Reviews'
-import Notifications from './Notifications'
-import Settings from './Settings'
+import ProfileAvatar from '../profileAvatar/ProfileAvatar'
+import FavoritesButton from '../buttons/FavoritesButton'
+import ReviewsButton from '../buttons/ReviewsButton'
+import NotificationsButton from '../buttons/NotificationsButton'
+import SettingsButton from '../buttons/SettingsButton'
 
 class Profile extends Component {
   static navigationOptions = {
@@ -28,12 +28,12 @@ class Profile extends Component {
     return (
       <ScrollView style={{ marginTop: 25 }}>
         <Card title="My Account" onLayout={this.onPageLayout}>
-          <Avatar parentWidth={this.state.cardWidth} />
+          <ProfileAvatar parentWidth={this.state.cardWidth} />
 
-          <Favorites />
-          <Reviews />
-          <Notifications />
-          <Settings />
+          <FavoritesButton />
+          <ReviewsButton />
+          <NotificationsButton />
+          <SettingsButton />
         </Card>
       </ScrollView>
     )
