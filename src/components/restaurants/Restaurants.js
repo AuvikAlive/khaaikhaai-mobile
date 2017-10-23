@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
-import { Icon } from 'react-native-elements'
+import { View, Text, ScrollView, FlatList } from 'react-native'
+import { Icon, List, ListItem } from 'react-native-elements'
+
+import { list } from './List'
 
 class Restaurants extends Component {
   static navigationOptions = {
@@ -9,11 +11,25 @@ class Restaurants extends Component {
     )
   }
 
+  renderItem = ({ item }) => (
+    <ListItem
+      avatar={{ uri: item.avatar_url }}
+      key={item.name}
+      title={item.name}
+    />
+  )
+
   render() {
     return (
-      <View style={{ marginTop: 25 }}>
-        <Text>Restaurants List</Text>
-      </View>
+      <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
+        <ScrollView>
+          <FlatList
+            data={list}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => item.name}
+          />
+        </ScrollView>
+      </List>
     )
   }
 }
