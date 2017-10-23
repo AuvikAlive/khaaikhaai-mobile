@@ -2,15 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, ScrollView, FlatList } from 'react-native'
 import { Icon, List, ListItem } from 'react-native-elements'
 
-import { list } from './List'
-
 class Restaurants extends Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="restaurant-menu" color={tintColor} />
-    )
-  }
-
   renderItem = ({ item }) => (
     <ListItem
       avatar={{ uri: item.avatar_url }}
@@ -24,7 +16,7 @@ class Restaurants extends Component {
       <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
         <ScrollView>
           <FlatList
-            data={list}
+            data={this.props.list}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => item.name}
           />
