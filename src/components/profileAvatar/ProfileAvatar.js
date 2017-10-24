@@ -1,10 +1,20 @@
+// @flow
 import React, { Component } from 'react'
 import { Image } from 'react-native'
 
-class Avatar extends Component {
+type Props = {
+  parentWidth: number
+}
+
+type State = {
+  width: number,
+  height: number
+}
+
+class Avatar extends Component<void, Props, State> {
   state = {
-    width: null,
-    height: null
+    width: 0,
+    height: 0
   }
 
   componentDidMount() {
