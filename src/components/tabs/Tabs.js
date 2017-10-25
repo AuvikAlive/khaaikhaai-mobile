@@ -1,7 +1,7 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 
-import Reviews from '../reviews/Reviews'
+import ReviewsContainer from '../reviews/ReviewsContainer'
 import RestaurantsContainer from '../restaurants/RestaurantsContainer'
 import Profile from '../profile/Profile'
 
@@ -9,7 +9,7 @@ import { red, blue, orange } from '../../config/colors'
 
 const RouteConfigs = {
   Reviews: {
-    screen: Reviews
+    screen: ReviewsContainer
   },
   Restaurants: {
     screen: RestaurantsContainer

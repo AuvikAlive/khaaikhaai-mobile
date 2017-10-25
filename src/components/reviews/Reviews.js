@@ -1,17 +1,20 @@
+// @flow
+
 import React, { Component } from 'react'
 import { View, Text, ScrollView, FlatList } from 'react-native'
 import { Icon, List, ListItem } from 'react-native-elements'
 
-import { list } from './List'
+type listItem = {
+  avatar_url: string,
+  name: string
+}
 
-class Reviews extends Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="badge" type="simple-line-icon" color={tintColor} />
-    )
-  }
+type Props = {
+  list: Array<listItem>
+}
 
-  renderItem = ({ item }) => (
+class Reviews extends Component<void, Props, void> {
+  renderItem = ({ item }: { item: listItem }) => (
     <ListItem
       avatar={{ uri: item.avatar_url }}
       key={item.name}
@@ -24,9 +27,9 @@ class Reviews extends Component {
       <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
         <ScrollView>
           <FlatList
-            data={list}
+            data={this.props.list}
             renderItem={this.renderItem}
-            keyExtractor={(item, index) => item.name}
+            keyExtractor={(item: listItem): string => item.name}
           />
         </ScrollView>
       </List>
