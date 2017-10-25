@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Button } from 'react-native-elements'
 
-import { green } from '../../config/colors'
+import { green } from '../../theme'
 
 const Notifications = () => (
   <Button

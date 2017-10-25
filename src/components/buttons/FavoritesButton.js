@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Button } from 'react-native-elements'
 
-import { red } from '../../config/colors'
+import { red } from '../../theme'
 
 const Favorite = () => (
   <Button

@@ -5,7 +5,7 @@ import ReviewsContainer from '../reviews/ReviewsContainer'
 import RestaurantsContainer from '../restaurants/RestaurantsContainer'
 import Profile from '../profile/Profile'
 
-import { red, blue, orange } from '../../config/colors'
+import { red, blue, yellow } from '../../theme'
 
 const RouteConfigs = {
   Reviews: {
@@ -26,12 +26,12 @@ const TabNavigatorConfig = {
     showLabel: false,
     showIcon: true,
     inactiveTintColor: 'white',
-    activeTintColor: red,
+    activeTintColor: yellow,
     indicatorStyle: {
-      backgroundColor: red
+      backgroundColor: yellow
     },
     style: {
-      backgroundColor: blue
+      backgroundColor: red
     }
   }
 }

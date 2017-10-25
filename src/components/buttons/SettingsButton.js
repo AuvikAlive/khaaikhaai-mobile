@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Button } from 'react-native-elements'
 
-import { orange } from '../../config/colors'
+import { orange } from '../../theme'
 
 const Settings = () => (
   <Button

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Button } from 'react-native-elements'
 
-import { yellow } from '../../config/colors'
+import { yellow } from '../../theme'
 
 const Reviews = () => (
   <Button
