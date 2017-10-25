@@ -17,14 +17,12 @@ type OnLayoutEvent = {
   }
 }
 
-const navigationOptions = {
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="account" type="material-community" color={tintColor} />
-  )
-}
-
 class Profile extends Component {
-  static navigationOptions = navigationOptions
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="account" type="material-community" color={tintColor} />
+    )
+  }
 
   state = {
     cardWidth: 0

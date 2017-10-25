@@ -1,18 +1,11 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Text } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { fetchRestaurantsAction } from '../../actions/actions'
+import { fetchRestaurants } from '../../actions/actions'
 
 import Restaurants from './Restaurants'
-
-const navigationOptions = {
-  tabBarIcon: ({ tintColor }: { tintColor: string }) => (
-    <Icon name="restaurant-menu" color={tintColor} />
-  )
-}
 
 type Props = {
   fetchRestaurants: () => void,
@@ -20,7 +13,11 @@ type Props = {
 }
 
 class RestaurantsContainer extends Component<void, Props, void> {
-  static navigationOptions = navigationOptions
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }: { tintColor: string }) => (
+      <Icon name="restaurant-menu" color={tintColor} />
+    )
+  }
 
   componentDidMount() {
     this.props.fetchRestaurants()
@@ -31,16 +28,16 @@ class RestaurantsContainer extends Component<void, Props, void> {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     restaurants: state.restaurants
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchRestaurants: () => {
-      dispatch(fetchRestaurantsAction())
+      dispatch(fetchRestaurants())
     }
   }
 }

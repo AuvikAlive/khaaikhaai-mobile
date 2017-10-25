@@ -1,17 +1,10 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Text } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { fetchReviews } from '../../actions/actions'
 import Reviews from './Reviews'
-
-const navigationOptions = {
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="badge" type="simple-line-icon" color={tintColor} />
-  )
-}
 
 type Props = {
   fetchReviews: () => void,
@@ -19,7 +12,11 @@ type Props = {
 }
 
 class ReviewsContainer extends Component<void, Props, void> {
-  static navigationOptions = navigationOptions
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="badge" type="simple-line-icon" color={tintColor} />
+    )
+  }
 
   componentDidMount() {
     this.props.fetchReviews()
@@ -30,13 +27,13 @@ class ReviewsContainer extends Component<void, Props, void> {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     reviews: state.reviews
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchReviews: () => {
       dispatch(fetchReviews())

@@ -1,9 +1,9 @@
-import { fetchRestaurants, fetchReviewsAction } from './constants'
+import { fetchRestaurantsAction, fetchReviewsAction } from './constants'
 import list from './list'
 
-export function fetchRestaurantsAction() {
+export function fetchRestaurants() {
   return {
-    type: fetchRestaurants,
+    type: fetchRestaurantsAction,
     payload: list
   }
 }
