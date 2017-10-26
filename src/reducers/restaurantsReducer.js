@@ -1,8 +1,8 @@
-import { fetchRestaurants } from '../actions/constants'
+import { fetchRestaurantsAction } from '../actions/constants'
 
 const restaurantsReducer = (state = [], action) => {
   switch (action.type) {
-    case fetchRestaurants:
+    case fetchRestaurantsAction:
       return action.payload
 
     default:

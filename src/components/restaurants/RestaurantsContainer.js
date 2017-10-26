@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { fetchRestaurants } from '../../actions/actions'
-
 import Restaurants from './Restaurants'
 
 type Props = {

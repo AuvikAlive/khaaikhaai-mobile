@@ -8,7 +8,7 @@ describe('Restaurants actions', () => {
   test('fetchRestaurants action creator returns fetchRestaurants action', () => {
     const action = {
       type: fetchRestaurantsAction,
-      payload: ''
+      payload: list
     }
 
     expect(fetchRestaurants()).toEqual(action)
