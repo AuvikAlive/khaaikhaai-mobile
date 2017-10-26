@@ -1,11 +1,9 @@
-import React from 'react'
 import { TabNavigator } from 'react-navigation'
-
 import ReviewsContainer from '../reviews/ReviewsContainer'
 import RestaurantsContainer from '../restaurants/RestaurantsContainer'
 import Profile from '../profile/Profile'
 
-import { red, blue, yellow } from '../../theme'
+import { red, yellow } from '../../theme'
 
 const RouteConfigs = {
   Reviews: {
