@@ -1,31 +1,31 @@
-import { delay } from 'redux-saga'
-import { put, takeEvery, all, call } from 'redux-saga/effects'
-import {
-  fetchRestaurantsAction,
-  fetchRestaurantsActionFullfilled
-} from '../actions/constants'
+import { eventChannel } from 'redux-saga'
+import { put, take, fork } from 'redux-saga/effects'
+import { fetchRestaurantsActionFullfilled } from '../actions/constants'
 import { database } from './database'
 
-export function getRestaurantsFromFirebase() {
-  return new Promise((resolve, reject) => {
+function createEventChannel() {
+  const listener = eventChannel(emit => {
     database
       .ref('/restaurants')
       .limitToFirst(5)
-      .on('value', snapshot => resolve(snapshot.val()))
+      .on('value', snapshot => emit(snapshot.val()))
+
+    return () => database.ref('/restaurants').off(listener)
   })
+
+  return listener
 }
 
-export const fetchRestaurants = function* fetchRestaurants() {
-  const restaurants = yield getRestaurantsFromFirebase()
-  yield put({ type: fetchRestaurantsActionFullfilled, payload: restaurants })
-}
-
-export const watchFetchRestaurants = function* watchFetchRestaurants() {
-  yield takeEvery(fetchRestaurantsAction, fetchRestaurants)
+export const fetchRestaurantsSaga = function* fetchRestaurants() {
+  const updateChannel = createEventChannel()
+  while (true) {
+    const restaurants = yield take(updateChannel)
+    yield put({ type: fetchRestaurantsActionFullfilled, payload: restaurants })
+  }
 }
 
 const rootSaga = function* rootSaga() {
-  yield all([watchFetchRestaurants()])
+  yield fork(fetchRestaurantsSaga)
 }
 
 export default rootSaga

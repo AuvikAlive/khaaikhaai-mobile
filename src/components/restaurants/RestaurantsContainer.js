@@ -3,8 +3,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
-import values from 'lodash/values';
-import { fetchRestaurants } from '../../actions/actions'
+import values from 'lodash/values'
 import Restaurants from './Restaurants'
 
 type Props = {
@@ -17,10 +16,6 @@ class RestaurantsContainer extends Component<void, Props, void> {
     tabBarIcon: ({ tintColor }: { tintColor: string }) => (
       <Icon name="restaurant-menu" color={tintColor} />
     )
-  }
-
-  componentDidMount() {
-    this.props.fetchRestaurants()
   }
 
   render() {
@@ -36,14 +31,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchRestaurants: () => {
-      dispatch(fetchRestaurants())
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  RestaurantsContainer
-)
+export default connect(mapStateToProps)(RestaurantsContainer)
