@@ -26,7 +26,7 @@ const TabNavigatorConfig = {
     inactiveTintColor: 'white',
     activeTintColor: yellow,
     indicatorStyle: {
-      backgroundColor: yellow
+      backgroundColor: red
     },
     style: {
       backgroundColor: red
