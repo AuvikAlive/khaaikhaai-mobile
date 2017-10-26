@@ -15,11 +15,7 @@ type Props = {
 
 class Restaurants extends Component<void, Props, void> {
   renderItem = ({ item }: { item: listItem }) => (
-    <ListItem
-      avatar={{ uri: item.avatar_url }}
-      key={item.name}
-      title={item.name}
-    />
+    <ListItem key={item.name} title={item.name} />
   )
 
   render() {

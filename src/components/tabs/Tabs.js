@@ -6,11 +6,11 @@ import Profile from '../profile/Profile'
 import { red, yellow } from '../../theme'
 
 const RouteConfigs = {
-  Reviews: {
-    screen: ReviewsContainer
-  },
   Restaurants: {
     screen: RestaurantsContainer
+  },
+  Reviews: {
+    screen: ReviewsContainer
   },
   Profile: {
     screen: Profile

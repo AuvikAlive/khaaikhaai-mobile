@@ -3,8 +3,7 @@ import list from './list'
 
 export function fetchRestaurants() {
   return {
-    type: fetchRestaurantsAction,
-    payload: list
+    type: fetchRestaurantsAction
   }
 }
 

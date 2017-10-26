@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
+import values from 'lodash/values';
 import { fetchRestaurants } from '../../actions/actions'
 import Restaurants from './Restaurants'
 
@@ -28,8 +29,10 @@ class RestaurantsContainer extends Component<void, Props, void> {
 }
 
 const mapStateToProps = state => {
+  const restaurantsObject = state.restaurants
+  const restaurants = values(restaurantsObject)
   return {
-    restaurants: state.restaurants
+    restaurants: restaurants
   }
 }
 
