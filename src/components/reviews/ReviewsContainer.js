@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { fetchReviews } from '../../actions/actions'
+import { fetchReviews } from '../../store/actions/actions'
 import Reviews from './Reviews'
 
 type Props = {

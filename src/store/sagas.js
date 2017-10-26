@@ -1,6 +1,6 @@
 import { eventChannel } from 'redux-saga'
 import { put, take, fork } from 'redux-saga/effects'
-import { fetchRestaurantsActionFullfilled } from '../actions/constants'
+import { fetchRestaurantsActionFullfilled } from './actions/constants'
 import { database } from './database'
 
 function createEventChannel() {
