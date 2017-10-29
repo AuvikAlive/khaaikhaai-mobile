@@ -24,7 +24,7 @@ class Reviews extends Component<void, Props, void> {
 
   render() {
     return (
-      <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
+      <List containerStyle={{ marginTop: 25 }}>
         <FlatList
           data={this.props.list}
           renderItem={this.renderItem}

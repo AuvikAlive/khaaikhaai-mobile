@@ -1,7 +1,6 @@
 // @flow
 
 import React, { Component } from 'react'
-import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux'
 import values from 'lodash/values'
 import Restaurants from './Restaurants'
@@ -11,16 +10,11 @@ type Props = {
   restaurants: Array<Object>
 }
 
-class RestaurantsContainer extends Component<void, Props, void> {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }: { tintColor: string }) => (
-      <Icon name="restaurant-menu" color={tintColor} />
-    )
+const RestaurantsContainer = (props: Props) => {
+  const viewDetails = () => {
+    props.navigation.navigate('Details', { test: 'something' })
   }
-
-  render() {
-    return <Restaurants list={this.props.restaurants} />
-  }
+  return <Restaurants onItemPress={viewDetails} list={props.restaurants} />
 }
 
 const mapStateToProps = state => {

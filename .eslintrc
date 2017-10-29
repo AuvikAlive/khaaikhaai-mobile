@@ -8,5 +8,6 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     // overrides
+    "react/prop-types": 0
   }
 }

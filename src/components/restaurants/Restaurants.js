@@ -10,17 +10,22 @@ type listItem = {
 }
 
 type Props = {
-  list: Array<listItem>
+  list: Array<listItem>,
+  onItemPress: () => void
 }
 
 class Restaurants extends Component<void, Props, void> {
   renderItem = ({ item }: { item: listItem }) => (
-    <ListItem key={item.restaurantID} title={item.restaurantName} />
+    <ListItem
+      onPress={this.props.onItemPress}
+      key={item.restaurantID}
+      title={item.restaurantName}
+    />
   )
 
   render() {
     return (
-      <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
+      <List containerStyle={{ marginTop: 25 }}>
         <FlatList
           data={this.props.list}
           renderItem={this.renderItem}
