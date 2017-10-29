@@ -1,12 +1,12 @@
 // @flow
 
 import React, { Component } from 'react'
-import { View, Text, ScrollView, FlatList } from 'react-native'
-import { Icon, List, ListItem } from 'react-native-elements'
+import { FlatList } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
 
 type listItem = {
-  avatar_url: string,
-  name: string
+  restaurantID: string,
+  restaurantName: string
 }
 
 type Props = {
@@ -15,19 +15,17 @@ type Props = {
 
 class Restaurants extends Component<void, Props, void> {
   renderItem = ({ item }: { item: listItem }) => (
-    <ListItem key={item.name} title={item.name} />
+    <ListItem key={item.restaurantID} title={item.restaurantName} />
   )
 
   render() {
     return (
       <List containerStyle={{ marginBottom: 20, marginTop: 25 }}>
-        <ScrollView>
-          <FlatList
-            data={this.props.list}
-            renderItem={this.renderItem}
-            keyExtractor={(item: listItem): string => item.name}
-          />
-        </ScrollView>
+        <FlatList
+          data={this.props.list}
+          renderItem={this.renderItem}
+          keyExtractor={(item: listItem): string => item.restaurantName}
+        />
       </List>
     )
   }

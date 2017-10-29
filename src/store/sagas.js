@@ -7,7 +7,7 @@ function createEventChannel() {
   const listener = eventChannel(emit => {
     database
       .ref('/restaurants')
-      .limitToFirst(5)
+      .limitToFirst(20)
       .on('value', snapshot => emit(snapshot.val()))
 
     return () => database.ref('/restaurants').off(listener)
