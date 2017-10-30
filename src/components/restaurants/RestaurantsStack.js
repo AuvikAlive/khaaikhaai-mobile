@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 import RestaurantsContainer from './RestaurantsContainer'
 import RestaurantDetails from './RestaurantDetails'
+import ItemVariations from './ItemVariations'
 
 const RouteConfigs = {
   Feed: {
@@ -8,6 +9,9 @@ const RouteConfigs = {
   },
   Details: {
     screen: RestaurantDetails
+  },
+  Variations: {
+    screen: ItemVariations
   }
 }
 const StackNavigatorConfig = {

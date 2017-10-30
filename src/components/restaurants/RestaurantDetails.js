@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import values from 'lodash/values'
 import { FlatList } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
+import ItemVariations from './ItemVariations'
 
 type listItem = {
   restaurantID: string,
@@ -12,7 +13,19 @@ class RestaurantDetails extends Component {
   state = { display: false }
 
   renderItem = ({ item }: { item: listItem }) => (
-    <ListItem key={item.itemID} title={item.itemName} />
+    <ListItem
+      key={item.itemID}
+      title={item.itemName}
+      titleStyle={{ alignSelf: 'center' }}
+      subtitle={
+        item.itemVariations ? (
+          <ItemVariations variations={item.itemVariations} />
+        ) : (
+          ''
+        )
+      }
+      hideChevron={true}
+    />
   )
 
   renderList = items => (
