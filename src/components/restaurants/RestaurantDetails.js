@@ -1,30 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react'
 import values from 'lodash/values'
-import { FlatList } from 'react-native'
-import { Card, List, ListItem } from 'react-native-elements'
+import { FlatList, BackHandler, Platform } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
 
 type listItem = {
   restaurantID: string,
   restaurantName: string
 }
 
-const RestaurantDetails = props => {
-  const restaurant = props.navigation.state.params.restaurant
-  const items = values(restaurant.items)
+class RestaurantDetails extends Component {
+  state = { display: false }
 
-  const renderItem = ({ item }: { item: listItem }) => (
+  renderItem = ({ item }: { item: listItem }) => (
     <ListItem key={item.itemID} title={item.itemName} />
   )
 
-  return (
-    <List containerStyle={{ marginTop: 25 }}>
-      <FlatList
-        data={items}
-        renderItem={renderItem}
-        keyExtractor={(item: listItem): string => item.itemID}
-      />
-    </List>
+  renderList = items => (
+    <FlatList
+      data={items}
+      renderItem={this.renderItem}
+      keyExtractor={(item: listItem): string => item.itemID}
+    />
   )
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ display: true })
+    }, 0)
+  }
+
+  render() {
+    const restaurant = this.props.navigation.state.params.restaurant
+    const items = values(restaurant.items)
+    const display = this.state.display
+
+    return (
+      <List
+        containerStyle={{
+          marginTop: 25
+        }}
+      >
+        {display ? this.renderList(items) : null}
+      </List>
+    )
+  }
 }
+
+// const RestaurantDetails = props => {
+//   const restaurant = props.navigation.state.params.restaurant
+//   const items = values(restaurant.items)
+
+//   const renderItem = ({ item }: { item: listItem }) => (
+//     <ListItem key={item.itemID} title={item.itemName} />
+//   )
+
+//   return (
+//     <List containerStyle={{ marginTop: 25 }}>
+//       <FlatList
+//         data={items}
+//         renderItem={renderItem}
+//         keyExtractor={(item: listItem): string => item.itemID}
+//       />
+//     </List>
+//   )
+// }
 
 export default RestaurantDetails
