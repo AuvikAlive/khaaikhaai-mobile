@@ -11,14 +11,12 @@ type listItem = {
 
 type Props = {
   list: Array<listItem>,
-  navigation: {
-    navigate: (stackName: string, parameter: { restaurant: listItem }) => void
-  }
+  navigate: (stackName: string, parameter: { restaurant: listItem }) => void
 }
 
 class Restaurants extends Component<void, Props, void> {
   onItemPress = (item: listItem) => {
-    this.props.navigation.navigate('Details', { restaurant: item })
+    this.props.navigate('Details', { restaurant: item })
   }
 
   renderItem = ({ item }: { item: listItem }) => (

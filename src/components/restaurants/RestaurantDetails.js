@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import values from 'lodash/values'
-import { FlatList, BackHandler, Platform } from 'react-native'
+import { FlatList } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 
 type listItem = {

@@ -12,9 +12,9 @@ type Props = {
 }
 
 const RestaurantsContainer = (props: Props) => {
-  const { navigation } = props
+  const navigate = props.navigation.navigate
 
-  return <Restaurants navigation={navigation} list={props.restaurants} />
+  return <Restaurants navigate={navigate} list={props.restaurants} />
 }
 
 const mapStateToProps = state => {
