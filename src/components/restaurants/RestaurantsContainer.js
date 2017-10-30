@@ -1,20 +1,20 @@
 // @flow
 
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import values from 'lodash/values'
 import Restaurants from './Restaurants'
 
 type Props = {
   fetchRestaurants: () => void,
-  restaurants: Array<Object>
+  restaurants: Array<Object>,
+  navigation: { navigate: () => void }
 }
 
 const RestaurantsContainer = (props: Props) => {
-  const viewDetails = () => {
-    props.navigation.navigate('Details', { test: 'something' })
-  }
-  return <Restaurants onItemPress={viewDetails} list={props.restaurants} />
+  const { navigation } = props
+
+  return <Restaurants navigation={navigation} list={props.restaurants} />
 }
 
 const mapStateToProps = state => {

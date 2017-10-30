@@ -1,25 +1,30 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { Card, Button } from 'react-native-elements'
+import React from 'react'
+import values from 'lodash/values'
+import { FlatList } from 'react-native'
+import { Card, List, ListItem } from 'react-native-elements'
 
-const RestaurantDetails = () => (
-  <Card title="HELLO WORLD">
-    <Text style={{ marginBottom: 10 }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-    <Button
-      icon={{ name: 'code' }}
-      backgroundColor="#03A9F4"
-      buttonStyle={{
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0
-      }}
-      title="VIEW NOW"
-    />
-  </Card>
-)
+type listItem = {
+  restaurantID: string,
+  restaurantName: string
+}
+
+const RestaurantDetails = props => {
+  const restaurant = props.navigation.state.params.restaurant
+  const items = values(restaurant.items)
+
+  const renderItem = ({ item }: { item: listItem }) => (
+    <ListItem key={item.itemID} title={item.itemName} />
+  )
+
+  return (
+    <List containerStyle={{ marginTop: 25 }}>
+      <FlatList
+        data={items}
+        renderItem={renderItem}
+        keyExtractor={(item: listItem): string => item.itemID}
+      />
+    </List>
+  )
+}
 
 export default RestaurantDetails
