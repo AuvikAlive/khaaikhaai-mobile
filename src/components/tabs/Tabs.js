@@ -5,7 +5,7 @@ import ReviewsContainer from '../reviews/ReviewsContainer'
 import RestaurantsStack from '../restaurants/RestaurantsStack'
 import Profile from '../profile/Profile'
 
-import { blue, green } from '../../theme'
+import { blue, red } from '../../theme'
 
 const restaurantsIcon = ({ tintColor }) => (
   <Icon name="restaurant-menu" color={tintColor} />
@@ -33,9 +33,9 @@ const TabNavigatorConfig = {
     showLabel: false,
     showIcon: true,
     inactiveTintColor: 'white',
-    activeTintColor: green,
+    activeTintColor: red,
     indicatorStyle: {
-      backgroundColor: green
+      backgroundColor: red
     },
     style: {
       backgroundColor: blue
