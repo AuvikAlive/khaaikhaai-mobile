@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import values from 'lodash/values'
-import { FlatList } from 'react-native'
+import { FlatList, ListView } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 import ItemVariations from './ItemVariations'
 
@@ -12,7 +12,7 @@ type listItem = {
 class RestaurantDetails extends Component {
   state = { display: false }
 
-  renderItem = ({ item }: { item: listItem }) => (
+  renderItem = item => (
     <ListItem
       key={item.itemID}
       title={item.itemName}
@@ -28,13 +28,18 @@ class RestaurantDetails extends Component {
     />
   )
 
-  renderList = items => (
-    <FlatList
-      data={items}
-      renderItem={this.renderItem}
-      keyExtractor={(item: listItem): string => item.itemID}
-    />
-  )
+  renderList = items => {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const dataSource = ds.cloneWithRows(items)
+
+    return (
+      <ListView
+        dataSource={dataSource}
+        renderRow={this.renderItem}
+        keyExtractor={(item: listItem): string => item.itemID}
+      />
+    )
+  }
 
   componentDidMount() {
     setTimeout(() => {
