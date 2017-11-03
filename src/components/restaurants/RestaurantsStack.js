@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 import RestaurantsContainer from './RestaurantsContainer'
-import RestaurantDetails from './RestaurantDetails'
-import ItemVariations from './ItemVariations'
+import RestaurantDetails from '../restaurantDetails/RestaurantDetails'
+import ItemVariations from '../restaurantDetails/ItemVariations'
 
 const RouteConfigs = {
   Feed: {

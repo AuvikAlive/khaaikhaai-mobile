@@ -16,7 +16,7 @@ class RestaurantDetails extends Component {
     <ListItem
       key={item.itemID}
       title={item.itemName}
-      titleStyle={{ alignSelf: 'center' }}
+      titleStyle={{ alignSelf: 'center', color: 'black' }}
       subtitle={
         item.itemVariations ? (
           <ItemVariations variations={item.itemVariations} />

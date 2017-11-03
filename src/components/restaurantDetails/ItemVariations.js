@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const ItemVariations = props => (
-  <View>
+  <View style={styles.parent}>
     {props.variations.map((value, index) => (
       <View style={styles.container} key={index}>
         <Text style={styles.child}>{value.variationName}</Text>
@@ -14,15 +14,17 @@ const ItemVariations = props => (
 )
 
 const styles = StyleSheet.create({
+  parent: {
+    padding: 10
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   child: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    textAlign: 'center',
     width: '33.33%'
   }
 })
