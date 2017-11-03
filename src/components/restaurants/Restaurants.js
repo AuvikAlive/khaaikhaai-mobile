@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { FlatList } from 'react-native'
+import { ListView } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 
 type listItem = {
@@ -19,7 +19,7 @@ class Restaurants extends Component<void, Props, void> {
     this.props.navigate('Details', { restaurant: item })
   }
 
-  renderItem = ({ item }: { item: listItem }) => (
+  renderItem = (item: listItem) => (
     <ListItem
       onPress={() => this.onItemPress(item)}
       key={item.restaurantID}
@@ -28,11 +28,14 @@ class Restaurants extends Component<void, Props, void> {
   )
 
   render() {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const dataSource = ds.cloneWithRows(this.props.list)
+
     return (
       <List containerStyle={{ marginTop: 25 }}>
-        <FlatList
-          data={this.props.list}
-          renderItem={this.renderItem}
+        <ListView
+          dataSource={dataSource}
+          renderRow={this.renderItem}
           keyExtractor={(item: listItem): string => item.restaurantName}
         />
       </List>
