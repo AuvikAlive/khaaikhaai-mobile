@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { ListView } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
+import SearchRestaurants from '../searchRestaurants/SearchRestaurants'
 
 type listItem = {
   restaurantID: string,
@@ -33,6 +34,7 @@ class Restaurants extends Component<void, Props, void> {
 
     return (
       <List containerStyle={{ marginTop: 25 }}>
+        <SearchRestaurants />
         <ListView
           dataSource={dataSource}
           renderRow={this.renderItem}
