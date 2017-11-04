@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation'
-import RestaurantsContainer from './RestaurantsContainer'
+import RestaurantsContainer from '../restaurants/RestaurantsContainer'
 import RestaurantDetails from '../restaurantDetails/RestaurantDetails'
 import ItemVariations from '../restaurantDetails/ItemVariations'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { Icon } from 'react-native-elements'
 import ReviewsContainer from '../reviews/ReviewsContainer'
-import RestaurantsStack from '../restaurants/RestaurantsStack'
+import RestaurantsStack from '../restaurantsStack/RestaurantsStack'
 import Profile from '../profile/Profile'
 
 import { blue, red } from '../../theme'
