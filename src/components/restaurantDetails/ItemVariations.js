@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { gray } from '../../theme'
 
 const ItemVariations = props => (
   <View style={styles.parent}>
@@ -25,7 +26,8 @@ const styles = StyleSheet.create({
   },
   child: {
     textAlign: 'center',
-    width: '33.33%'
+    width: '33.33%',
+    color: gray
   }
 })
 

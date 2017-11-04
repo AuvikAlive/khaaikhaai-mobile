@@ -16,7 +16,7 @@ class RestaurantDetails extends Component {
     <ListItem
       key={item.itemID}
       title={item.itemName}
-      titleStyle={{ alignSelf: 'center', color: 'black' }}
+      titleStyle={{ alignSelf: 'center' }}
       subtitle={
         item.itemVariations ? (
           <ItemVariations variations={item.itemVariations} />
@@ -58,6 +58,11 @@ class RestaurantDetails extends Component {
           marginTop: 25
         }}
       >
+        <ListItem
+          title={restaurant.restaurantName}
+          titleStyle={{ alignSelf: 'center' }}
+          hideChevron={true}
+        />
         {display ? this.renderList(items) : null}
       </List>
     )
