@@ -3,11 +3,6 @@ import values from 'lodash/values'
 import { List, ListItem } from 'react-native-elements'
 import renderList from './renderList'
 
-type listItem = {
-  restaurantID: string,
-  restaurantName: string
-}
-
 class RestaurantDetails extends Component {
   state = { display: false }
 

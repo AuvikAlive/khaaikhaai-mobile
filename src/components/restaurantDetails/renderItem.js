@@ -3,7 +3,7 @@
 import React from 'react'
 import { ListItem } from 'react-native-elements'
 import ItemVariations from './ItemVariations'
-import type listItem from './listItemType'
+import type { listItem } from './listItemType'
 
 const renderItem = (item: listItem) => (
   <ListItem
