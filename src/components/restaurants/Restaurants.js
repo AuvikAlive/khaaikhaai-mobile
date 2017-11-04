@@ -1,9 +1,11 @@
 // @flow
 
 import React, { Component } from 'react'
-import { ListView } from 'react-native'
+import { ListView, View } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 import SearchRestaurants from '../searchRestaurants/SearchRestaurants'
+import { PacmanIndicator } from 'react-native-indicators'
+import { red } from '../../theme'
 
 type listItem = {
   restaurantID: string,
@@ -28,19 +30,29 @@ class Restaurants extends Component<void, Props, void> {
     />
   )
 
+  renderList = (dataSource, renderItem) => (
+    <List containerStyle={{ marginTop: 25 }}>
+      <SearchRestaurants />
+      <ListView
+        dataSource={dataSource}
+        renderRow={renderItem}
+        keyExtractor={(item: listItem): string => item.restaurantName}
+      />
+    </List>
+  )
+
   render() {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
     const dataSource = ds.cloneWithRows(this.props.list)
 
     return (
-      <List containerStyle={{ marginTop: 25 }}>
-        <SearchRestaurants />
-        <ListView
-          dataSource={dataSource}
-          renderRow={this.renderItem}
-          keyExtractor={(item: listItem): string => item.restaurantName}
-        />
-      </List>
+      <View style={{ flex: 1 }}>
+        {this.props.list.length === 0 ? (
+          <PacmanIndicator color={red} />
+        ) : (
+          this.renderList(dataSource, this.renderItem)
+        )}
+      </View>
     )
   }
 }
