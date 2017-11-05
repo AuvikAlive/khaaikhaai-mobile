@@ -3,7 +3,7 @@
 import React from 'react'
 import { ListView } from 'react-native'
 import { List } from 'react-native-elements'
-import SearchRestaurants from '../searchRestaurants/SearchRestaurants'
+import SearchRestaurants from '../searchRestaurants/SearchRestaurantsContainer'
 import renderItem from './renderItem'
 import type { listItem } from './listItemType'
 
