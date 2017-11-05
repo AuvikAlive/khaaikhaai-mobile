@@ -11,10 +11,14 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
 const renderList = (
   list: Array<listItem>,
-  navigate: (stackName: string, parameter: { restaurant: listItem }) => void
+  navigate: (stackName: string, parameter: { restaurant: listItem }) => void,
+  lastItem,
+  fetchRestaurants
 ) => {
   const dataSource = ds.cloneWithRows(list)
-
+  const loadMoreContentAsync = async () => {
+    fetchRestaurants(lastItem.restaurantID, 20)
+  }
   return (
     <List containerStyle={{ marginTop: 25 }}>
       <SearchRestaurants />

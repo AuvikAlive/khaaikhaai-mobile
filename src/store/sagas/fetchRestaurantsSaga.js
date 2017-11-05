@@ -1,25 +1,38 @@
-import { eventChannel } from 'redux-saga'
-import { put, take } from 'redux-saga/effects'
-import { fetchRestaurants } from '../actions/actions'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import { database } from '../database'
+import {
+  fetchRestaurantsAction,
+  fetchRestaurantsActionFulfilled
+} from '../actions/constants'
 
-function createEventChannel() {
-  const listener = eventChannel(emit => {
-    database
+const queryData = (startAt, limitToFirst) => {
+  if (startAt) {
+    return database
       .ref('/restaurants')
-      .limitToFirst(2)
-      .on('value', snapshot => emit(snapshot.val()))
+      .orderByKey()
+      .startAt(startAt)
+      .limitToFirst(limitToFirst)
+      .once('value')
+  } else {
+    return database
+      .ref('/restaurants')
+      .limitToFirst(limitToFirst)
+      .once('value')
+  }
+}
 
-    return () => database.ref('/restaurants').off(listener)
-  })
-
-  return listener
+const fetchRestaurants = function* fetchRestaurants({ startAt, limitToFirst }) {
+  try {
+    const snapshot = yield call(queryData, startAt, limitToFirst)
+    yield put({
+      type: fetchRestaurantsActionFulfilled,
+      payload: snapshot.val()
+    })
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export const fetchRestaurantsSaga = function* fetchRestaurantsSaga() {
-  const updateChannel = createEventChannel()
-  while (true) {
-    const restaurants = yield take(updateChannel)
-    yield put(fetchRestaurants(restaurants))
-  }
+  yield takeEvery(fetchRestaurantsAction, fetchRestaurants)
 }

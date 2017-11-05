@@ -1,9 +1,11 @@
 // @flow
 
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import values from 'lodash/values'
 import Restaurants from './Restaurants'
+import { fetchRestaurants } from '../../store/actions/actions'
 
 type Props = {
   fetchRestaurants: () => void,
@@ -11,10 +13,23 @@ type Props = {
   navigation: { navigate: () => void }
 }
 
-const RestaurantsContainer = (props: Props) => {
-  const navigate = props.navigation.navigate
+class RestaurantsContainer extends Component<void, Props, void> {
+  componentDidMount() {
+    this.props.fetchRestaurants(null, 20)
+  }
 
-  return <Restaurants navigate={navigate} list={props.restaurants} />
+  render() {
+    const navigate = this.props.navigation.navigate
+    const { restaurants, fetchRestaurants } = this.props
+
+    return (
+      <Restaurants
+        navigate={navigate}
+        list={restaurants}
+        fetchRestaurants={fetchRestaurants}
+      />
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -25,4 +40,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(RestaurantsContainer)
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({ fetchRestaurants }, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  RestaurantsContainer
+)

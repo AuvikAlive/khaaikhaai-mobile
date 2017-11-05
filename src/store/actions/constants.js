@@ -1,4 +1,6 @@
 export const fetchRestaurantsAction = 'FETCH_RESTAURANTS'
+export const fetchRestaurantsActionFulfilled = 'FETCH_RESTAURANTS_FULFILLED'
+export const fetchRestaurantsActionRejected = 'FETCH_RESTAURANTS_REJECTED'
 export const queryRestaurantsAction = 'QUERY_RESTAURANTS'
 export const fetchReviewsAction = 'FETCH_REVIEWS'
 export const fetchProfile = 'FETCH_PROFILE'

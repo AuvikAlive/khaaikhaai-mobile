@@ -5,10 +5,11 @@ import {
 } from './constants'
 import list from './list'
 
-export function fetchRestaurants(restaurants) {
+export function fetchRestaurants(startAt, limitToFirst) {
   return {
     type: fetchRestaurantsAction,
-    payload: restaurants
+    startAt,
+    limitToFirst
   }
 }
 

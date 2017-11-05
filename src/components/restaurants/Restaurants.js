@@ -13,14 +13,15 @@ type Props = {
 }
 
 const Restaurants = (props: Props) => {
-  const { list, navigate } = props
+  const { list, navigate, fetchRestaurants } = props
+  const lastItem = list.slice(-1)[0]
 
   return (
     <View style={{ flex: 1 }}>
       {list.length === 0 ? (
         <PacmanIndicator color={red} />
       ) : (
-        renderList(list, navigate)
+        renderList(list, navigate, lastItem, fetchRestaurants)
       )}
     </View>
   )
