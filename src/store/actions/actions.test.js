@@ -7,8 +7,7 @@ import list from './list'
 describe('Restaurants actions', () => {
   test('fetchRestaurants action creator returns fetchRestaurants action', () => {
     const action = {
-      type: fetchRestaurantsAction,
-      payload: list
+      type: fetchRestaurantsAction
     }
 
     expect(fetchRestaurants()).toEqual(action)

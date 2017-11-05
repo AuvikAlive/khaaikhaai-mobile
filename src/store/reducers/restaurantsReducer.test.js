@@ -12,8 +12,8 @@ test('restaurantsReducer returns previous state when action does not match', () 
   expect(restaurantsReducer(state, action)).toEqual(state)
 })
 
-test('restaurantsReducer returns reviews when action matches', () => {
-  const action = fetchRestaurants()
+test('restaurantsReducer returns restaurants when action matches', () => {
+  const action = fetchRestaurants(list)
   const state = []
   const expectedState = list
 

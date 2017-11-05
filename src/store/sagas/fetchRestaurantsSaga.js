@@ -1,7 +1,7 @@
 import { eventChannel } from 'redux-saga'
-import { put, take, fork } from 'redux-saga/effects'
-import { fetchRestaurantsAction } from './actions/constants'
-import { database } from './database'
+import { put, take } from 'redux-saga/effects'
+import { fetchRestaurants } from '../actions/actions'
+import { database } from '../database'
 
 function createEventChannel() {
   const listener = eventChannel(emit => {
@@ -16,16 +16,10 @@ function createEventChannel() {
   return listener
 }
 
-export const fetchRestaurantsSaga = function* fetchRestaurants() {
+export const fetchRestaurantsSaga = function* fetchRestaurantsSaga() {
   const updateChannel = createEventChannel()
   while (true) {
     const restaurants = yield take(updateChannel)
-    yield put({ type: fetchRestaurantsAction, payload: restaurants })
+    yield put(fetchRestaurants(restaurants))
   }
 }
-
-const rootSaga = function* rootSaga() {
-  yield fork(fetchRestaurantsSaga)
-}
-
-export default rootSaga
