@@ -20,10 +20,10 @@ const Restaurants = (props: Props) => {
 
   return (
     <View style={{ flex: 1 }}>
-      {loading ? (
+      {list.length === 0 ? (
         <PacmanIndicator color={red} />
       ) : (
-        renderList(list, navigate, lastItem, fetchRestaurants)
+        renderList(list, navigate, lastItem, fetchRestaurants, loading)
       )}
     </View>
   )

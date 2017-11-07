@@ -1,11 +1,20 @@
-import { fetchRestaurantsActionFulfilled } from '../actions/constants'
+import {
+  fetchRestaurantsAction,
+  fetchRestaurantsActionFulfilled
+} from '../actions/constants'
 const initialState = {
-  loading: true,
+  loading: false,
   list: []
 }
 
 const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case fetchRestaurantsAction:
+      return {
+        ...state,
+        loading: true
+      }
+
     case fetchRestaurantsActionFulfilled:
       return {
         ...state,
