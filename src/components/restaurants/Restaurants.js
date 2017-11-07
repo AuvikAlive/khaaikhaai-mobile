@@ -3,8 +3,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import renderList from './renderList'
-import { PacmanIndicator } from 'react-native-indicators'
-import { red } from '../../theme'
+import Indicator from '../indicator/Indicator'
 import type { listItem } from './listItemType'
 
 type Props = {
@@ -21,7 +20,7 @@ const Restaurants = (props: Props) => {
   return (
     <View style={{ flex: 1 }}>
       {list.length === 0 ? (
-        <PacmanIndicator color={red} />
+        <Indicator />
       ) : (
         renderList(list, navigate, lastItem, fetchRestaurants, loading)
       )}
