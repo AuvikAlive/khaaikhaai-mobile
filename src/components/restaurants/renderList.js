@@ -17,7 +17,7 @@ const renderList = (
 ) => {
   const dataSource = ds.cloneWithRows(list)
   const loadMoreContentAsync = async () => {
-    fetchRestaurants(lastItem.restaurantID, 20)
+    fetchRestaurants(20, lastItem.restaurantID)
   }
   return (
     <List containerStyle={{ marginTop: 25 }}>

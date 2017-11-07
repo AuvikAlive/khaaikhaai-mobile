@@ -15,7 +15,7 @@ type Props = {
 
 class RestaurantsContainer extends Component<void, Props, void> {
   componentDidMount() {
-    this.props.fetchRestaurants(null, 20)
+    this.props.fetchRestaurants(20)
   }
 
   render() {

@@ -6,11 +6,15 @@ import list from './list'
 
 describe('Restaurants actions', () => {
   test('fetchRestaurants action creator returns fetchRestaurants action', () => {
+    const startAt = 40
+    const limitToFirst = 20
     const action = {
-      type: fetchRestaurantsAction
+      type: fetchRestaurantsAction,
+      startAt,
+      limitToFirst
     }
 
-    expect(fetchRestaurants()).toEqual(action)
+    expect(fetchRestaurants(limitToFirst, startAt)).toEqual(action)
   })
 })
 

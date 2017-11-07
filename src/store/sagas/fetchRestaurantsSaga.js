@@ -5,7 +5,7 @@ import {
   fetchRestaurantsActionFulfilled
 } from '../actions/constants'
 
-const queryData = (startAt, limitToFirst) => {
+const queryData = (limitToFirst, startAt) => {
   if (startAt) {
     return database
       .ref('/restaurants')
@@ -21,9 +21,9 @@ const queryData = (startAt, limitToFirst) => {
   }
 }
 
-const fetchRestaurants = function* fetchRestaurants({ startAt, limitToFirst }) {
+const fetchRestaurants = function* fetchRestaurants({ limitToFirst, startAt }) {
   try {
-    const snapshot = yield call(queryData, startAt, limitToFirst)
+    const snapshot = yield call(queryData, limitToFirst, startAt)
     yield put({
       type: fetchRestaurantsActionFulfilled,
       payload: snapshot.val()
