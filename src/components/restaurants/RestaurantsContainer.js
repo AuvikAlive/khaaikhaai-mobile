@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import values from 'lodash/values'
 import Restaurants from './Restaurants'
 import { fetchRestaurants } from '../../store/actions/actions'
@@ -10,7 +9,8 @@ import { fetchRestaurants } from '../../store/actions/actions'
 type Props = {
   fetchRestaurants: () => void,
   restaurants: Array<Object>,
-  navigation: { navigate: () => void }
+  navigation: { navigate: () => void },
+  loading: boolean
 }
 
 class RestaurantsContainer extends Component<void, Props, void> {
@@ -20,29 +20,31 @@ class RestaurantsContainer extends Component<void, Props, void> {
 
   render() {
     const navigate = this.props.navigation.navigate
-    const { restaurants, fetchRestaurants } = this.props
+    const { restaurants, fetchRestaurants, loading } = this.props
 
     return (
       <Restaurants
         navigate={navigate}
         list={restaurants}
         fetchRestaurants={fetchRestaurants}
+        loading={loading}
       />
     )
   }
 }
 
 const mapStateToProps = state => {
-  const restaurantsObject = state.restaurants
-  const restaurants = values(restaurantsObject)
+  const { list, loading } = state.restaurants
+  const restaurants = values(list)
   return {
-    restaurants: restaurants
+    restaurants,
+    loading
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({ fetchRestaurants }, dispatch)
-})
+const mapDispatchToProps = {
+  fetchRestaurants
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   RestaurantsContainer

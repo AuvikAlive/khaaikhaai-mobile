@@ -16,8 +16,8 @@ const renderList = (
   fetchRestaurants
 ) => {
   const dataSource = ds.cloneWithRows(list)
-  const loadMoreContentAsync = async () => {
-    fetchRestaurants(20, lastItem.restaurantID)
+  const fetchNextRestaurants = () => {
+    console.log('runs!')
   }
   return (
     <List containerStyle={{ marginTop: 25 }}>
@@ -26,6 +26,8 @@ const renderList = (
         dataSource={dataSource}
         renderRow={item => renderItem(item, navigate)}
         keyExtractor={(item: listItem): string => item.restaurantName}
+        onEndReached={fetchNextRestaurants}
+        onEndReachedThreshold={5}
       />
     </List>
   )

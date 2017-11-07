@@ -1,9 +1,17 @@
 import { fetchRestaurantsActionFulfilled } from '../actions/constants'
+const initialState = {
+  loading: true,
+  list: []
+}
 
-const restaurantsReducer = (state = [], action) => {
+const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {
     case fetchRestaurantsActionFulfilled:
-      return { ...state, ...action.payload }
+      return {
+        ...state,
+        loading: false,
+        list: { ...state.list, ...action.payload }
+      }
 
     default:
       return state
